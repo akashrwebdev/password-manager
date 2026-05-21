@@ -1,25 +1,41 @@
 import React from "react";
 
+import {
+  ShieldUser,
+  LayoutDashboard,
+  Star,
+  Clock3,
+  Globe,
+  CreditCard,
+  FileText,
+  BadgeCheck,
+  KeyRound,
+  Briefcase,
+  ShieldCheck,
+  Trash2,
+  Settings,
+} from "lucide-react";
+
 const Sidebar = () => {
-  // Navigation sections data
+  // Sidebar navigation data
   const navSections = [
     {
-      title: "",
+      title: "OVERVIEW",
       items: [
         {
           name: "All Items",
-          icon: "🔒",
+          icon: LayoutDashboard,
           count: 42,
           // active: true,
         },
         {
           name: "Favorites",
-          icon: "⭐",
+          icon: Star,
           count: 8,
         },
         {
           name: "Recent",
-          icon: "🕒",
+          icon: Clock3,
           count: 12,
         },
       ],
@@ -30,27 +46,27 @@ const Sidebar = () => {
       items: [
         {
           name: "Logins",
-          icon: "🌐",
+          icon: Globe,
           count: 31,
         },
         {
           name: "Credit Cards",
-          icon: "💳",
+          icon: CreditCard,
           count: 3,
         },
         {
           name: "Secure Notes",
-          icon: "🧾",
+          icon: FileText,
           count: 4,
         },
         {
           name: "Identities",
-          icon: "🪪",
+          icon: BadgeCheck,
           count: 2,
         },
         {
           name: "Passwords",
-          icon: "🗝️",
+          icon: KeyRound,
           count: 2,
         },
       ],
@@ -61,80 +77,108 @@ const Sidebar = () => {
       items: [
         {
           name: "Personal",
-          icon: "💼",
+          icon: Briefcase,
           count: 29,
         },
         {
           name: "Work",
-          icon: "👜",
+          icon: Briefcase,
           count: 13,
         },
       ],
     },
 
     {
-      title:"",
+      title: "SYSTEM",
       items: [
         {
           name: "Security Center",
-          icon: "🛡️",
+          icon: ShieldCheck,
         },
         {
           name: "Trash",
-          icon: "🗑️",
+          icon: Trash2,
         },
         {
           name: "Settings",
-          icon: "⚙️",
+          icon: Settings,
         },
       ],
     },
   ];
 
   return (
-    // Sidebar container
-    <div className="w-64 border-r border-white/5 p-5">
-      {/* Logo / Heading */}
-      <div className="font-bold text-3xl pt-2 pb-6 px-3">MY VAULT🛡️</div>
+    // Sidebar wrapper
+    <aside
+      className="
+        w-72
+        bg-[#0b1326]/70
+        backdrop-blur-xl
+        border-r border-white/5
+        p-5
+      ">
+      {/* Logo */}
+      <div className="flex items-center gap-2 font-bold text-3xl pt-2 pb-7 px-2 text-white">
+        <ShieldUser size={30} className="text-blue-300" />
+        <span>MY VAULT</span>
+      </div>
 
-      {/* Loop through all sections */}
+      {/* Render all sections */}
       {navSections.map((section) => (
-        <div key={section.title} className="mb-1">
-          {/* Section title */}
+        <div key={section.title} className="mb-3">
+          {/* Section heading */}
           {section.title && (
-            <h2 className="text-sm text-white/40 pl-3 mb-3 tracking-wide">
+            <h2
+              className="
+                text-xs
+                font-semibold
+                text-white/35
+                uppercase
+                pl-3
+                mb-2
+                tracking-widest
+              ">
               {section.title}
             </h2>
           )}
 
-          {/* Section items */}
+          {/* Navigation items */}
           <div>
-            {section.items.map((item) => (
-              // Navigation button
-              <button
-                key={item.name}
-                className={`
-                  flex items-center justify-between
-                  w-full px-3 py-2 rounded-2xl
-                  transition-all duration-200 text-white
-                  hover:bg-blue-500/15 hover:text-blue-300
-                `}>
-                {/* Left side (icon + text) */}
-                <div className="flex items-center gap-3">
-                  <span>{item.icon}</span>
-                  <span>{item.name}</span>
-                </div>
+            {section.items.map((item) => {
+              // Store icon component in variable
+              const Icon = item.icon;
 
-                {/* Right side count */}
-                {item.count && (
-                  <span className="text-sm text-white/50">{item.count}</span>
-                )}
-              </button>
-            ))}
+              return (
+                <button
+                  key={item.name}
+                  className={`flex items-center justify-between w-full px-3 py-2 text-md font-semibold rounded-2xl
+                  transition-all duration-200
+                  ${
+                    item.active
+                      ? "bg-blue-500/20 text-blue-300 ]"
+                      : "text-white/80 hover:bg-white/5 hover:text-white"
+                  }
+              `}>
+                  {/* Left side */}
+                  <div className="flex items-center gap-3">
+                    {/* Icon */}
+                    <Icon size={18} />
+
+                    {/* Item name */}
+                    <span>{item.name}</span>
+                  </div>
+
+                  {/* Count */}
+                  {item.count && (
+                    <span className="text-sm text-white/50">{item.count}</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       ))}
-    </div>
+    </aside>
   );
 };
 
