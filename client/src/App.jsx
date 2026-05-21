@@ -1,11 +1,12 @@
-import Sidebar from "./components/Sidebar";
+import React from "react";
+import Dashboard from "./Dashboard";
 
-function App() {
+const App = () => {
   return (
-    <div className="flex h-screen bg-background">
-      <Sidebar />
+    <div>
+      <Dashboard />
     </div>
   );
-}
+};
 
 export default App;

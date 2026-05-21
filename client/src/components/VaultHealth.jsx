@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const VaultHealth = () => {
-  return (
-    <div>VaultHealth</div>
-  )
-}
+  return <div>VaultHealth</div>;
+};
 
-export default VaultHealth
+export default VaultHealth;

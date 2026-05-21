@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const BreachCard = () => {
-  return (
-    <div>BreachCard</div>
-  )
-}
+  return <div>BreachCard</div>;
+};
 
-export default BreachCard
+export default BreachCard;

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Topbar = () => {
   return (
-    <div>Topbar</div>
-  )
-}
+    <div className="bg-[#0B1118]  ">
+      
+    </div>
+  );
+};
 
-export default Topbar
+export default Topbar;
